@@ -6,17 +6,21 @@ SpatialXomics is a web-based platform for managing, analyzing, and visualizing m
 
 **Feedback:** Found a bug or have a suggestion? Open a [GitHub Issue](https://github.com/NeoNexusX/MassVision/issues) or email **jydong@xmu.edu.cn**.
 
+
+
 ## Overview
 
-MSI data files are large and often scattered across instruments and personal machines. Researchers typically juggle local environments, multiple tools, and manual workflows — which makes data hard to share and results hard to reproduce.
+MSI data files are large and often scattered across instruments and personal machines. Researchers typically juggle local environments, multiple tools, and manual workflows—making data sharing, reproducibility, and visualization difficult.
 
-SpatialXomics brings the most common MSI data management and analysis tasks into a single web platform. Upload imzML/ibd pairs from your browser, fill in metadata, then manage, preprocess, visualize, and analyze your datasets — all without installing anything locally.
+SpatialXomics brings the most common MSI data management and analysis tasks into a single web platform. Upload imzML/ibd pairs from your browser, fill in metadata, then manage, preprocess, visualize, and analyze your datasets—all without installing anything locally.
 
 **Who is this for?**
 
 - MSI, metabolomics, and mass spectrometry researchers who need a central place to manage, share, and download imzML datasets.
 - Anyone who wants to run denoising, baseline correction, intensity normalization, peak picking, or peak alignment in the cloud.
 - Users who need ion images, mean spectra, annotation matching, or UMAP/KMeans tissue segmentation.
+
+
 
 ## Features
 
@@ -25,11 +29,12 @@ SpatialXomics brings the most common MSI data management and analysis tasks into
 | **Accounts & Permissions** | Registration, login, password recovery, profile editing. Admins can manage all users. |
 | **Data Upload** | Upload paired .imzML/.ibd files with automatic deduplication, ZIP compression, chunked upload, and resume. |
 | **Dataset Management** | Browse public datasets, manage your own, inspect metadata, share public pages, and download originals. |
-| **Collections** | Group related public datasets into curated collections with academic metadata and an ordered member list. |
 | **Preprocessing** | Compatible methods shown automatically based on your data's spectrum/storage mode: noise reduction, baseline correction, normalization, peak picking, peak alignment. |
 | **Visualization** | Continuous mode: ion images + mean spectra. Processed mode: TIC images + per-pixel spectra. Adjustable range, gamma, colormap, TIC normalization, and transparent PNG export. |
 | **Spatial Analysis** | UMAP/KMeans clustering, cluster filtering, rectangular/freeform ROIs, and multi-region comparison. |
 | **Annotation Matching** | Import CSV annotation tables, match by m/z with ppm or Da tolerance, filter, export, and query PubChem. |
+
+
 
 ## Quick Start
 
@@ -49,9 +54,9 @@ First-time users: create an account (see [Account Management](./account-manageme
 
 Search by name or use filters to narrow down results (see [Finding Datasets](./finding-datasets)).
 
-**Example:** Filter for "Mouse Brain" data — click **Add filter**, set Organism to "Mouse" and Organism Part to "Brain", then click **Apply**.
+**Example:** Filter for "Mouse Brain" data—click **Add filter**, set Organism to "Mouse" and Organism Part to "Brain", then click **Apply**.
 
-![Filter example](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260907174909406.jpg_view)
+![image-20260921152642452](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260921152642561.jpg_view)
 
 ### 4. Inspect & Download
 
@@ -59,7 +64,7 @@ Click any dataset row to view its metadata.
 
 ![Dataset info](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260907175815189.jpg_view)
 
-The detail page shows biological info, acquisition parameters, and file details (see [Dataset Overview](./dataset-overview)). Use **Download** to get the raw files, or **Share** to publish the dataset and copy its public link.
+The detail page shows biological info, acquisition parameters, and file details (see [Dataset Overview](./dataset-overview)). Use **Download** to get the raw files or **Share** to copy a public link.
 
 ![Download & Share](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260907180028501.jpg_view)
 
@@ -73,7 +78,7 @@ Click **Visualize** on a dataset card to explore its data interactively (see [Da
 
 ### 6. Upload Your Own Data
 
-Click **Upload New Dataset** to add a dataset of your own.
+Click **Upload New Dataset** to add a private dataset.
 
 ![Upload button](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260908135743254.jpg_view)
 
@@ -91,7 +96,7 @@ Go to **Workspace > New Analysis**, pick a dataset, and choose preprocessing ste
 
 **Example:** Select "Mouse_Kidney_MALDI_30_Negative_77bf5d" and enable denoising, baseline correction, normalization, peak picking, and peak alignment.
 
-![New Analysis](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260908141557982.jpg_view)
+![image-20260921153404078](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260921153404155.jpg_view)
 
 Click **Start Analysis** to submit. You'll be redirected to the Workspace where you can track progress (see [Workspace](./workspace)).
 
@@ -104,7 +109,7 @@ Pick a topic that matches your workflow:
 | Guide | Covers |
 |---|---|
 | [Account Management](./account-management) | Registration, login, password recovery, profile editing, quotas |
-| [Finding Datasets](./finding-datasets) | Search, filter, and sort public and personal datasets |
+| [Finding Datasets](./finding-datasets) | Search, filter, sort public and personal datasets |
 | [Dataset Overview](./dataset-overview) | Metadata fields, downloading, sharing public links |
 | [Data Visualization](./data-visualization) | Ion images, TIC plots, spectra, UMAP/KMeans, ROIs, region comparison, annotations |
 | [Upload Data](./upload-data) | imzML/ibd upload flow, metadata form, deduplication, resume |

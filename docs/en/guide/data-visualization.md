@@ -6,7 +6,9 @@ Explore ion images, TIC plots, and spectra interactively. Covers UMAP/KMeans clu
 
 **Feedback:** Found a bug or have a suggestion? Open a [GitHub Issue](https://github.com/NeoNexusX/MassVision/issues) or email **jydong@xmu.edu.cn**.
 
-## Dataset Status
+
+
+## 1. Dataset Status
 
 Dataset cards show one of two actions:
 
@@ -21,11 +23,13 @@ When you click **Explore > Generate**, the platform creates a task and redirects
 
 ![Generate dialog](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260909212549240.jpg_view)
 
-## Page Layout
+
+
+## 2. Page Layout
 
 The visualization page has five main areas:
 
-![Page layout](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260911150203309.jpg_view)
+![](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260922151323726.jpg_view)
 
 1. **Ion intensity image** (center) — spatial heatmap of the selected m/z
 2. **Pixel spectrum** (bottom) — mean spectrum or per-pixel spectrum
@@ -33,29 +37,29 @@ The visualization page has five main areas:
 4. **Info & controls** (right sidebar) — metadata, display settings, clustering, ROIs
 5. **Annotation panel** (left rail) — CSV-based annotation matching
 
-## Right Sidebar Controls
+### 2.1 Right Sidebar Controls
 
-### Info
+**1. Info**
 
 Shows dataset metadata: Polarity, Analyzer, Ionisation Source, Pixel Size, Spectrum Mode, Storage Mode.
 
-### Display Range
+**2. Display Range**
 
 - Enter Min/Max values directly.
 - The current values are shown as percentiles (e.g., "95.23%").
 
-### Statistic
+**3. Statistic**
 
 - **Intensity histogram** — visualizes the intensity distribution; red lines mark the current Min/Max.
 - **Dimensions** — image size (e.g., 100 × 80).
 - **Non-zero** — number of pixels with non-zero intensity.
 - **TIC** — total ion current.
 
-### Preprocessing
+**4. Preprocessing**
 
 Lists the processing methods applied to this result (e.g., "Direct conversion (no preprocessing)").
 
-### Visualization Controls
+**5. Visualization Controls**
 
 | Control | Description |
 |---|---|
@@ -63,41 +67,30 @@ Lists the processing methods applied to this result (e.g., "Direct conversion (n
 | **Enable UMAP/KMeans** | First use requires confirmation; triggers a backend UMAP task. |
 | **UMAP** | Overlay showing UMAP dimensionality reduction. |
 | **KMeans** | Run KMeans on the UMAP embedding (k = 2–20). Runs locally in the browser. |
-| **Opacity** | Adjust overlay transparency for UMAP and for KMeans separately. |
-| **Export UMAP PNG / Export KMeans PNG** | Download the corresponding overlay as a PNG image. |
-| **Clusters** | Toggle individual clusters on and off. |
+| **Opacity** | Adjust overlay transparency for UMAP/KMeans. |
+| **Export PNG** | Download the current UMAP/KMeans view. |
+| **Cluster filter** | Toggle individual clusters on/off. |
 
-### Region of Interest (ROI)
+**6. Region of Interest (ROI)**
 
 | Tool | Description |
 |---|---|
 | **Rect** | Drag to draw a rectangular ROI. |
-| **Lasso** | Draw a freeform outline for an irregular ROI. |
+| **Lasso** | Freeform draw an irregular ROI. |
 | **Confirm / Cancel** | Finalize or discard the current draft. |
 | **ROI only / Show all** | Toggle between showing only ROI pixels or the full image. |
 | **ROI stats** | Each ROI shows: Pixels, Mean, Std, Min, Max. |
 | **Delete / Clear all** | Remove individual ROIs or clear everything. |
 
-### Mask Import & Export
 
-Export ROI masks and KMeans clusters as a binary mask file, or import one and use it as a display filter.
 
-| Control | Description |
-|---|---|
-| **Format** | Choose the mask file format. |
-| **ROI masks / KMeans clusters** | Pick which regions to include. Checked regions are merged into a single binary mask. |
-| **Export mask** | Download one mask file. Each file embeds the dataset name, shape, pixel size, and a SHA-256 digest over the pixel payload. |
-| **Import mask** | Load a mask and apply it as a filter on the ion image. |
-| **Apply Mask / Show Original** | Re-apply the imported mask, or suspend it and show the full image. |
-| **Clear imported mask** | Remove the imported mask. |
-
-## Ion Intensity Image
+### 2.2 Ion Intensity Image
 
 Displays the spatial intensity distribution for the selected m/z value.
 
-![Ion image](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260911153144287.jpg_view)
+![](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260922155714424.jpg_view)
 
-### Interaction
+**1.Interaction**
 
 | Action | How |
 |---|---|
@@ -106,31 +99,25 @@ Displays the spatial intensity distribution for the selected m/z value.
 | **Pixel info** | Hover to see 1-based coordinates `(x, y)` and intensity. |
 | **Select pixel** | In Processed mode, clicking a pixel loads its spectrum. |
 
-### Toolbar
+**2.Toolbar**
 
 | Control | Description |
 |---|---|
 | **m/z search** | Continuous mode only. Enter a target m/z and press Enter or click Search to jump to the nearest peak. |
 | **Tolerance ±** | m/z matching tolerance. Default 0.0001, range 1e-8–1. |
 | **Colormap** | Viridis, Inferno (default), Magma, Hot, Gray. |
-| **Intensity Scale** | Linear / Log / TIC norm. TIC norm divides each pixel by its total ion current and needs pre-computed stats on Continuous data. |
+| **Intensity Scale** | Linear / Log / TIC norm (TIC norm available for Continuous data with precomputed stats). |
 | **Reset** | Restore all controls to defaults. |
 | **PNG** | Export the current image with a transparent background. |
 
-### Display Range & Gamma (Right Strip)
+**3.Display Range & Gamma (Right Strip)**
 
 - **Min/Max sliders** — drag to adjust contrast.
 - **Gamma slider** — range 0.5–1.5, default 1.0.
 
-## Multi-Ion Overlay
 
-Continuous data can overlay several ions at once as separate colour channels. Enable **Overlay mode**, then add the current m/z as a channel — or use **Batch add m/z** and click peaks straight on the spectrum.
 
-- Up to **10 channels**. Each channel is normalized on its own range and added as a colour.
-- Per-channel controls cover visibility, colour, and opacity.
-- Display Range, Colormap, and Gamma do not apply while an overlay is active (their controls are greyed out).
-
-## Pixel Spectrum
+### 2.3 Pixel Spectrum
 
 Content depends on the data mode:
 
@@ -143,7 +130,9 @@ Content depends on the data mode:
 - The currently selected m/z is highlighted with a **vertical marker**.
 - Footer shows: Peaks, Intensity, Selected/Tolerance, or Pixel info.
 
-## Region Comparison
+
+
+### 2.4 Region Comparison
 
 ::: tip Availability
 Region comparison is only available for **Centroid** data.
@@ -154,9 +143,7 @@ Compare spectral differences between two regions (A vs. B). Regions can come fro
 1. **KMeans clusters** (generated in the sidebar)
 2. **User-drawn ROIs**
 
-Set a minimum detection rate and an intensity threshold, then click **Compare**. Results are grouped into **A only**, **B only**, **A enriched**, **B enriched**, and **Shared**, with detection rates and mean intensities for both sides. Members of a group are combined (union) before comparing.
-
-### Using KMeans Clusters
+#### 2.4.1 Using KMeans Clusters
 
 1. Open the **Visualization** section in the right sidebar and enable KMeans.
 
@@ -172,7 +159,7 @@ Set a minimum detection rate and an intensity threshold, then click **Compare**.
 
    ![Comparison result](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260914161105137.jpg_view)
 
-### Using ROIs
+#### 2.4.2 Using ROIs
 
 1. Click **Rect** in the ROI section, draw a region, then click **Confirm** to create ROI 1.
 
@@ -185,8 +172,10 @@ Set a minimum detection rate and an intensity threshold, then click **Compare**.
 3. Select both ROIs for comparison.
 
    ![ROI comparison](https://official-oss.oss-cn-hongkong.aliyuncs.com/docs/20260914161809308.jpg_view)
+   
+   
 
-## Annotation Panel
+### 2.5 Annotation Panel
 
 The collapsible left-side panel imports an external metabolite/lipid annotation CSV, matches each row's experimental m/z against the current average spectrum, and lets you jump to matched peaks.
 
@@ -194,7 +183,7 @@ The collapsible left-side panel imports an external metabolite/lipid annotation 
 Annotation matching requires **Continuous + Centroid** data. A warning appears if the spectrum mode is not supported.
 :::
 
-### Import
+#### 1. Import
 
 Click **Import CSV** to select a file, or drag and drop a CSV onto the panel. Parsing runs in a Web Worker; large tables use virtual scrolling.
 
@@ -205,20 +194,18 @@ CSV format requirements:
 - **Candidate names**: merged from `Candidate_1` through `Candidate_N` (or a single `Candidate` column). Empty values are dropped.
 - **Optional columns**: `formula_ion` / `formula` (molecular formula), `Ion type` / `adduct` (adduct type).
 
-### Tolerance
+#### 2. Tolerance
 
 - Switch between **ppm** and **Da** units using the dropdown.
 - Matching re-runs automatically when the value changes.
 
-### Filtering & Search
+#### 3. Filtering & Search
 
 - **Status badges** (top) filter by All, Matched, or Unmatched rows.
 - **Adduct** and **Formula** dropdowns narrow results by metadata.
 - **Search box** filters by name, formula, or m/z keywords.
 
-Rows whose adduct or formula implies the opposite polarity, or whose m/z falls outside the spectrum range, are dropped before matching.
-
-### Sorting
+#### 4. Sorting
 
 Use the **Sort by** dropdown, then click the arrow to toggle ascending/descending:
 
@@ -229,13 +216,13 @@ Use the **Sort by** dropdown, then click the arrow to toggle ascending/descendin
 | Mass Difference | Mass error (Δ) |
 | Intensity | Average intensity at the matched peak |
 
-### Table Interaction
+#### 5. Table Interaction
 
 - Two compact columns: **Annotation** (compound name) and **Exp. m/z**.
 - **Hover card** shows: matched m/z, mass error, average intensity, status, and a **PubChem** lookup button.
 - **Click a matched row** to jump to that m/z, refreshing the ion image and highlighting the spectrum peak.
 
-### Export & Clear
+#### 6. Export & Clear
 
-- **Download** button exports matched rows as CSV with 8 columns: Name, Candidates, formula_ion, Ion type, Tar. m/z, Matched m/z, Mass Difference, Avg Intensity.
+- **Download** button exports matched rows as CSV.
 - **Trash** button clears the imported data.
